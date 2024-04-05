@@ -1,9 +1,11 @@
 import React from "react";
+import { FcStackOfPhotos } from "react-icons/fc";
+import { IoMdPhotos } from "react-icons/io";
 
 const Navbar = () => {
   return (
     <div>
-      <div className="navbar bg-transparent px-[50px]">
+      <div className="navbar bg-transparent px-[10px] md:px-[50px] ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +46,12 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a className="btn btn-ghost text-xl">Photo Plex</a>
+          <a className="btn btn-ghost text-xl">
+            <span>
+              <IoMdPhotos className="text-3xl" />
+            </span>
+            Photo Plex{" "}
+          </a>
         </div>
 
         <div className="hidden">
@@ -91,8 +98,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end gap-4">
-          <button className="btn btn-ghost btn-circle">
+        <div className="navbar-end gap-4 ">
+          <button className="btn btn-ghost btn-circle ">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +147,9 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a className="btn bg-blue-600 text-white ">Upload</a>
+          <div className="hidden md:block">
+            <a className="btn bg-blue-600 text-white  ">Upload</a>
+          </div>
         </div>
       </div>
     </div>
