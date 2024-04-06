@@ -47,7 +47,7 @@ const Hero = () => {
                   value={query}
                   onChange={handleSearchInputChange}
                   placeholder="Search for photos..."
-                  className="border-2 border-gray-300 px-4 py-2 rounded-md"
+                  className="border-2 border-gray-300 w-[60%] px-4 py-2 rounded-md"
                 />
                 <button
                   type="submit"

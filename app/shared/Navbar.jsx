@@ -1,6 +1,7 @@
 import React from "react";
 import { FcStackOfPhotos } from "react-icons/fc";
 import { IoMdPhotos } from "react-icons/io";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -46,12 +47,12 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a className="btn btn-ghost text-xl">
+          <Link href={"/"} className="btn btn-ghost text-xl">
             <span>
               <IoMdPhotos className="text-3xl" />
             </span>
             Photo Plex{" "}
-          </a>
+          </Link>
         </div>
 
         <div className="hidden">

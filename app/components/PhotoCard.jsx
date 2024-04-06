@@ -1,12 +1,11 @@
 import React from "react";
-
-
+import Link from "next/link";
 
 const PhotoCard = ({ item }) => {
   const { id, url, alt, src, photographer } = item;
-  console.log(item);
+  // console.log(item);
   return (
-    <div>
+    <Link href={`/photos/${item.id}`}>
       <div className="w-96 h-auto">
         <img
           className="rounded-md h-[460px] w-auto md:h-[600px] "
@@ -29,7 +28,7 @@ const PhotoCard = ({ item }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

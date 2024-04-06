@@ -4,18 +4,6 @@ import PhotoCard from "../components/PhotoCard";
 import { usePhotoContext } from "../Context/PhotoContext";
 import Skeleton from "../components/Skeleton";
 
-const SkeletonLoader = () => {
-  return (
-    <div className="flex flex-wrap justify-center space-x-4 mt-4">
-      {[...Array(12)].map((_, index) => (
-        <div
-          key={index}
-          className="bg-gray-200 rounded-md h-64 w-64 md:h-80 md:w-80 animate-pulse"></div>
-      ))}
-    </div>
-  );
-};
-
 const Photos = () => {
   const {
     photos,
