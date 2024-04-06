@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 const PhotoCard = ({ item }) => {
   const { id, url, alt, src, photographer } = item;
   console.log(item);
@@ -12,8 +14,8 @@ const PhotoCard = ({ item }) => {
           alt=""
         />
       </div>
-      <div className="ml-2">
-        <h1 className="text-xl ml-2 font-semibold">{alt}</h1>
+      <div className="mx-2">
+        <h1 className="text-xl font-semibold">{alt.slice(0, 30)}..</h1>
         <div className="flex justify-between m-2">
           <div>
             <a
@@ -23,7 +25,7 @@ const PhotoCard = ({ item }) => {
             </a>
           </div>
           <div>
-            <h2>{photographer}</h2>
+            <h2 className="text-sm">{photographer}</h2>
           </div>
         </div>
       </div>

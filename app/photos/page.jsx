@@ -2,6 +2,19 @@
 import React, { useEffect, useState } from "react";
 import PhotoCard from "../components/PhotoCard";
 import { usePhotoContext } from "../Context/PhotoContext";
+import Skeleton from "../components/Skeleton";
+
+const SkeletonLoader = () => {
+  return (
+    <div className="flex flex-wrap justify-center space-x-4 mt-4">
+      {[...Array(12)].map((_, index) => (
+        <div
+          key={index}
+          className="bg-gray-200 rounded-md h-64 w-64 md:h-80 md:w-80 animate-pulse"></div>
+      ))}
+    </div>
+  );
+};
 
 const Photos = () => {
   const {
@@ -47,30 +60,12 @@ const Photos = () => {
           </ul>
         </details>
       </div>
-      {/* search bar  */}
-      <div>
-        {/* Search bar */}
-        <form
-          onSubmit={handleSearchSubmit}
-          className="flex justify-center mb-4">
-          <input
-            type="text"
-            value={query}
-            onChange={handleSearchInputChange}
-            placeholder="Search for photos..."
-            className="border-2 border-gray-300 px-4 py-2 rounded-md"
-          />
-          <button
-            type="submit"
-            className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">
-            Search
-          </button>
-        </form>
-      </div>
-      {/* Loading indicator */}
-      {loading && <p>Loading...</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 place-content-center  gap-8 py-8">
+      {/* Loading indicator */}
+      {loading && <Skeleton />}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 place-content-center items-center  gap-8 py-8">
+        {/* <Skeleton /> */}
         {photos.map((item) => (
           <PhotoCard item={item} key={item.id} />
         ))}
