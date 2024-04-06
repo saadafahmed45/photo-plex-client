@@ -1,6 +1,28 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
+import { createClient } from "pexels";
+import { Context } from "@/context/Context";
 
 const Photos = () => {
+  const client = createClient(
+    "jCS9KVx1hRI7y877Kg5NO1lkeIfFs9dXz28MxIWlQ4Z4lqPRndtrZRsy"
+  );
+  const [photos, setPhotos] = useState([]);
+  const { searchPicGlobal } = useContext(Context); // search er value astache but kaj kore na keno?
+  console.log(searchPicGlobal);
+  useEffect(() => {
+    // Fetch photos from the Pexels API
+    client.photos
+      // query thek jekono kichu search kora jabe.
+      .search({ query: "car", per_page: 10 })
+      .then((response) => {
+        setPhotos(response.photos);
+      })
+      .catch((error) => {
+        console.error("Error fetching photos:", error);
+      });
+  }, []); // Run once on component mount
+
   return (
     <div className=" px-10 py-8">
       <div className="flex justify-center">
@@ -34,32 +56,19 @@ const Photos = () => {
           </ul>
         </details>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 place-content-center  gap-8 py-8">
-        <div className="w-96">
-          <img
-            className="rounded-md h-[460px] w-auto md:h-[600px] "
-            src="https://images.pexels.com/photos/5109665/pexels-photo-5109665.jpeg"
-            alt=""
-          />
-        </div>
-        <div className="w-96 relative">
-          <img
-            className="rounded-md h-[460px] w-auto md:h-[600px] "
-            src="https://images.pexels.com/photos/20778681/pexels-photo-20778681/free-photo-of-a-black-and-white-photo-of-a-cathedral.jpeg"
-            alt=""
-          />
-          {/* <div className=" ">
-            <button className="btn btn-primary m-2  absolute   bottom-0  right-0 ">
-              Download{" "}
-            </button>
-          </div> */}
-        </div>
-        <div className="w-96">
-          <img
-            className="rounded-md h-[460px] w-auto md:h-[600px] "
-            src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg"
-            alt=""
-          />
+      <div>
+        {/* {client.map((item, index) => console.log(item.url))} */}
+        <div className="flex-col flex ">
+          <div className="grid grid-cols-4 gap-3">
+            {photos.map((photo) => (
+              <img
+                className="w-full h-[350px] object-cover "
+                key={photo.id}
+                src={photo.src.medium}
+                alt={photo.url}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
