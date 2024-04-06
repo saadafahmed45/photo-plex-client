@@ -1,7 +1,18 @@
+"use client";
+import { usePhotoContext } from "@/app/Context/PhotoContext";
 import Navbar from "@/app/shared/Navbar";
 import React from "react";
 
 const Hero = () => {
+  const {
+    photos,
+    loading,
+    query,
+    setQuery,
+    fetchPhotos,
+    handleSearchSubmit,
+    handleSearchInputChange,
+  } = usePhotoContext();
   return (
     <div className="max-w-[1640px] mx-auto">
       <div
@@ -17,14 +28,34 @@ const Hero = () => {
               The best free stock photos, royalty free images & videos shared by
               creators
             </h1>
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <input
                 type="text"
                 placeholder="Type here...."
                 className="input input-bordered input-md input-primary w-full max-w-md"
               />
             </div>
-            <button className="btn btn-primary">Search</button>
+            <button className="btn btn-primary">Search</button> */}
+
+            <div>
+              {/* Search bar */}
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex justify-center mb-4">
+                <input
+                  type="text"
+                  value={query}
+                  onChange={handleSearchInputChange}
+                  placeholder="Search for photos..."
+                  className="border-2 border-gray-300 px-4 py-2 rounded-md"
+                />
+                <button
+                  type="submit"
+                  className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">
+                  Search
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
