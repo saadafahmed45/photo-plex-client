@@ -23,7 +23,7 @@ const Photos = () => {
             <a>Photo</a>
           </li>
           <li>
-            <a>Item 2</a>
+            <button>Item 2</button>
           </li>
           <li>
             <a>Item 3</a>

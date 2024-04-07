@@ -24,9 +24,9 @@ const Hero = () => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-conten  ">
           <div className="max-w-xl md:max-w-4xl  ">
-            <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white">
-              The best free stock photos, royalty free images & videos shared by
-              creators
+            <h1 className="mb-5 text-3xl md:text-4xl font-bold text-white">
+              Discover top-quality, free stock photos, royalty-free images
+              shared by talented creators.
             </h1>
             {/* <div className="mb-5">
               <input

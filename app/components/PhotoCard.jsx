@@ -17,9 +17,7 @@ const PhotoCard = ({ item }) => {
         <h1 className="text-xl font-semibold">{alt.slice(0, 30)}..</h1>
         <div className="flex justify-between m-2">
           <div>
-            <a
-              href={src.portrait}
-              className="btn btn-outline btn-sm btn-primary">
+            <a href={src} className="btn btn-outline btn-sm btn-primary">
               Download
             </a>
           </div>

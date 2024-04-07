@@ -13,7 +13,7 @@ export const PhotoProvider = ({ children }) => {
   useEffect(() => {
     if (!query) {
       // Fetch curated photos if no search query
-      fetchPhotos("Motorbike");
+      fetchPhotos("photography");
     } else {
       // Fetch photos based on search query
       fetchPhotos(query);
@@ -45,6 +45,9 @@ export const PhotoProvider = ({ children }) => {
     e.preventDefault();
     fetchPhotos(query);
   };
+
+  // catagory
+  const [category, setCategory] = useState("all");
 
   // loader
   const [loading, setLoading] = useState(true);
