@@ -2,6 +2,8 @@
 
 import NavigationHeader from "@/app/components/NavigationHeader";
 import React, { useEffect, useState } from "react";
+import Photos from "../page";
+import Link from "next/link";
 
 const SinglePhoto = ({ params }) => {
   const photoId = params.id;
@@ -44,7 +46,7 @@ const SinglePhoto = ({ params }) => {
     },
   ];
   return (
-    <div className="h-full px-8 md:px-16   py-4 ">
+    <div className="h-full px-8 md:px-4   py-4 ">
       {/* <NavigationHeader /> */}
       {/* section nav  */}
       <div className="bg-slate-100 p-2 ">
@@ -85,13 +87,24 @@ const SinglePhoto = ({ params }) => {
         </div>
       </div>
       {/* end nav  */}
-
+      <div className="text-sm breadcrumbs mx-8">
+        <ul>
+          <li>
+            <Link href={"/"}>Home</Link>
+          </li>
+          <li>
+            <a>photos</a>
+          </li>
+        </ul>
+      </div>
       <div className="h-auto w-full my-8 flex place-content-center">
-        <img className="w-96" src={src?.original} alt={alt} />
+        <img className="w-96" src={src?.portrait} alt={alt} />
       </div>
       <div>
         <h2 className="text-xl font-semibold">{alt}</h2>
       </div>
+
+      <Photos />
     </div>
   );
 };
