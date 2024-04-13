@@ -1,5 +1,8 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { appLogin } from "@/firebase.config";
 
 const PhotoContext = createContext();
 
@@ -52,17 +55,71 @@ export const PhotoProvider = ({ children }) => {
   // loader
   const [loading, setLoading] = useState(true);
 
+  // Authorization
+
+  // auth
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(appLogin);
+
+  const [user, setUser] = useState([]);
+
+  const handleGoogleSign = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        // ...
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+  console.log(user);
+
+  // sign out
+  const handleSingOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setUser("");
+        localStorage.setItem("user", JSON.stringify(""));
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+  // localStorage save
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")) || []);
+  }, []);
   return (
     <PhotoContext.Provider
       value={{
         photos,
         loading,
         query,
+        user,
         setQuery,
         fetchPhotos,
         handleSearchSubmit,
         handleSearchInputChange,
-      }}>
+        handleGoogleSign,
+        handleSingOut,
+      }}
+    >
       {children}
     </PhotoContext.Provider>
   );

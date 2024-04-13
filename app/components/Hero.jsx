@@ -20,9 +20,10 @@ const Hero = () => {
         style={{
           backgroundImage:
             "url(https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg)",
-        }}>
+        }}
+      >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-conten  ">
+        <div className="hero-content text-center text-neutral-content  ">
           <div className="max-w-xl md:max-w-4xl  ">
             <h1 className="mb-5 text-3xl md:text-4xl font-bold text-white">
               Discover top-quality, free stock photos, royalty-free images
@@ -41,7 +42,8 @@ const Hero = () => {
               {/* Search bar */}
               <form
                 onSubmit={handleSearchSubmit}
-                className="flex justify-center mb-4">
+                className="flex justify-center mb-4"
+              >
                 <input
                   type="text"
                   value={query}
@@ -51,7 +53,8 @@ const Hero = () => {
                 />
                 <button
                   type="submit"
-                  className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">
+                  className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+                >
                   Search
                 </button>
               </form>

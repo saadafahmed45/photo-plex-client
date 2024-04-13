@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 import { FcStackOfPhotos } from "react-icons/fc";
 import { IoMdPhotos } from "react-icons/io";
 import Link from "next/link";
+import { usePhotoContext } from "../Context/PhotoContext";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const { user, handleGoogleSign, handleSingOut } = usePhotoContext();
+  const { emailVerified, displayName, photoURL } = user;
+  const router = useRouter();
+
+  if (user.emailVerified == true) {
+    router.push("/"); // Redirecting to /cart route
+  }
   return (
     <div>
       <div className="navbar bg-transparent px-[10px] md:px-[50px] ">
@@ -15,7 +25,8 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -26,7 +37,8 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
               <li>
                 <a>Item 1</a>
               </li>
@@ -60,12 +72,14 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost m-1 bg-base-300">
+              className="btn btn-ghost m-1 bg-base-300"
+            >
               Photos
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
               <li>
                 <a>Video</a>
               </li>
@@ -89,13 +103,13 @@ const Navbar = () => {
                 <summary>Explore</summary>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <a>Submenu</a>
                   </li>
                 </ul>
               </details>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link href={"/login"}>Login</Link>
             </li>
           </ul>
         </div>
@@ -107,7 +121,8 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -122,17 +137,16 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar">
+              className="btn btn-ghost btn-circle avatar"
+            >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
+                <img alt="" src={photoURL} />
               </div>
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            >
               <li>
                 <a className="justify-between">
                   Profile
@@ -143,7 +157,9 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a href="" onClick={handleSingOut}>
+                  Logout
+                </a>
               </li>
             </ul>
           </div>

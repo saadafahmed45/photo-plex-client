@@ -77,10 +77,10 @@ const SinglePhoto = ({ params }) => {
               </div>
             ))}
             <div>
-              <button className="btn btn-active btn-primary">
+              <a href={src?.portrait} className="btn btn-active btn-primary">
                 {" "}
                 Free Download
-              </button>
+              </a>
             </div>
           </div>
           {/* nav button  */}
