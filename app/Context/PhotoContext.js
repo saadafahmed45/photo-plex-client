@@ -16,7 +16,7 @@ export const PhotoProvider = ({ children }) => {
   useEffect(() => {
     if (!query) {
       // Fetch curated photos if no search query
-      fetchPhotos("photography");
+      fetchPhotos("car");
     } else {
       // Fetch photos based on search query
       fetchPhotos(query);
@@ -54,6 +54,14 @@ export const PhotoProvider = ({ children }) => {
 
   // loader
   const [loading, setLoading] = useState(true);
+
+
+// favphoto
+const [favphoto,setFavphoto]=useState([])
+  const handleAddFavPhoto = () => {
+  console.log('fav photo')
+
+}
 
   // Authorization
 
